@@ -14,8 +14,34 @@
 
 #include <iostream>
 
+#include <SFML/Graphics.hpp>
+
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Tiling map");
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // Close window: exit
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+                break;
+            }
+        }
+
+        if (!window.isOpen())
+            break;
+
+        // Clear screen
+        window.clear();
+
+        // TODO: Draw stuff...
+
+        // Update the window
+        window.display();
+    }
 }
